@@ -1,0 +1,265 @@
+.map {
+
+	&-tree {
+		display: grid;
+		grid-template-rows: 50px max-content auto;
+		height: 100vh;
+		// grid-gap: $treePad * 2;
+
+		* {
+			@include font(400, 12px);
+		}
+
+		> * {
+			padding: $treePad * 1.5;
+		}
+
+		.asset-title {
+			@include font(600, 13px);
+		}
+
+		.txt-field {
+			background-color: $light;
+			border: none;
+			padding: 8px;
+			resize: none;
+			outline: none;
+
+			&::selection {
+				background-color: $light - 100;
+				color: white;
+			}
+
+			&:focus {
+				box-shadow: inset 0 0 0 1px $darkest;
+			}
+		}
+	}
+
+	&-menu {
+		display: grid;
+		grid-template-columns: 9fr 1fr;
+		align-items: center;
+
+		.title {
+			justify-self: start;
+		}
+	}
+
+	&-wrap {
+		width: 100vw;
+		overflow: scroll;
+		background-color: gray + 120;
+
+		&.no-scroll {
+			&-y { overflow-y: hidden; }
+			&-x { overflow-x: hidden; }
+		}
+	}
+
+	&-key {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(150px, 220px));
+		background-color: gray + 110;
+
+		.assets-page {
+			.asset-list > div {
+				@extend %hide;
+
+				&.show {
+					@extend %show;
+				}
+			}
+		}
+
+		.asset-list {
+			> div {
+				padding: 1apx 0;
+			}
+		}
+
+		.asset-type {
+			@include font(600, 10px);
+			text-transform: uppercase;
+		}
+
+		.count {
+			&-type {
+				padding: 0 0 6px 0;
+			}
+		}
+	}
+
+	&-home {
+		display: grid;
+		position: relative;
+		margin: 0 0 $treePad;
+
+		textarea {
+			width: $siteElemWidth;
+			height: $siteElemHeight;
+		}
+
+		&:before {
+			@extend %treeMapArms;
+			height: $treePad;
+			width: $treeArmThickness;
+			left: $treePad;
+			bottom: -$treePad;
+		}
+	}
+
+	&-tree-list {
+		display: grid;
+		padding: 0 0 0 $treePad;
+		grid-gap: $treePad * 2;
+
+		.site {
+
+			&, ul, li {
+				@extend %treeMapArms;
+			}
+
+			&:last-child {
+				padding-right: $treePad * 2;
+			}
+
+			&.site-root {
+				&:before {
+					width: $treeArmThickness;
+					height: $treePad;
+					top: 0;
+					left: $treePad;
+				}
+
+				&:after {
+					width: calc(100% + (#{$treePad} * 2));
+					height: $treeArmThickness;
+					top: 0;
+				}
+
+				&:last-child {
+					&:after {
+						width: $treePad;
+					}
+				}
+			}
+
+			&.collapsed {
+				ul {
+					@extend %hide;
+				}
+
+				li {
+					&.site-title {
+						span:before {
+							background-image: url(icons/plus.svg);
+						}
+					}
+				}
+			}
+
+			ul {
+				margin-left: $treePad * 2;
+
+				&.site-child {
+					margin-left: 0;
+
+					&:before {width: $treeArmThickness;
+						height: 100%;
+						left: -$treePad;
+						top: 0;
+					}
+
+					&:last-child {
+						&:before {
+							height: ($siteElemHeight / 2);
+						}
+					}
+				}			}
+
+			li {
+				width: $siteElemWidth;
+				height: $siteElemHeight;
+				background-color: rgba(orange, 0.5);
+				margin-top: $treePad;
+
+				&:before {
+					height: $treeArmThickness;
+					width: $treePad;
+					top: $siteHorizontalArmPosition;
+					left: -$treePad;
+				}
+
+				&:after {
+					height: calc(100% + #{$treePad});
+					width: $treeArmThickness;
+					top:  -$treePad;
+					left: -$treePad;
+				}
+
+				&.site-title, &:last-child {
+					&:after {
+						height: ($siteElemHeight / 2) + $treePad + 1;
+						top:  -$treePad;
+					}
+				}
+
+				&.site-title {
+					font-weight: 600;
+					position: relative;
+
+					span {
+						position: absolute;
+						top: -5px;
+						right: -5px;
+						width: 20px;
+						height: 20px;
+						background-color: $dark;
+						border-radius: 1em;
+						display: grid;
+						grid-template: 1fr / 1fr;
+
+						&:before {
+							content: '';
+							background-image: url(icons/minus.svg);
+							background-repeat: no-repeat;
+							background-size: cover;
+							width: 8px;
+							height: 8px;
+							align-self: center;
+							justify-self: center;
+						}
+
+						&:hover {
+							cursor: pointer;
+						}
+					}
+
+					// .txt-field {
+					// 	font-weight: bold;
+					// }
+
+					&.site-barren {
+						span {
+							display: none;
+						}
+					}
+				}
+
+				.txt-field {
+					width: 100%;
+					height: 100%;
+				}
+			}
+
+			&-root {
+				> .site-title {
+					&:before, &:after {
+						@extend %hide;
+					}
+				}
+			}
+		}
+	}
+}

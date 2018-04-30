@@ -1,0 +1,99 @@
+.button {
+	@include font(300, 9px)
+	border: none;
+	background-color: $dark;
+	text-transform: uppercase;
+	color: $lightest;
+	padding: 5px 8px;
+	letter-spacing: 0.1em;
+	border-radius: 3px;
+
+	&:hover, &:focus {
+		background-color: $darkest;
+		cursor: pointer;
+	}
+}
+
+.title {
+	@include font(900, 40px);
+	letter-spacing: -0.02em;
+	color: $darkest;
+	text-align: center;
+}
+
+.sliding-checkbox {
+	position: relative;
+
+	&:hover {
+		cursor: pointer;
+	}
+
+	&:before, &:after {
+		color: $desaturated;
+	}
+
+	&-input {
+		@extend %hide;
+		width: auto;
+
+		&:checked {
+			+ .sliding-checkbox-slider {
+				background-color: $enabled;
+
+				&:before {
+					left: $spa-slider-circle-offset-checked;
+				}
+			}
+		}
+	}
+
+	&-slider {
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-color: $desaturated;
+		width: $spa-slider-width;
+		height: $spa-slider-height;
+		border-radius: 20px;
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: $spa-slider-circle-offset;
+			left: $spa-slider-circle-offset;
+			width: $spa-slider-circle;
+			height: $spa-slider-circle;
+			background-color: $lightest;
+			transition: all 0.1s ease-in;
+			border-radius: 100%;
+		}
+	}
+
+	&-message {
+		position: relative;
+		top: -2px;
+		left: $spa-slider-width + 8px;
+		font-size: 12px;
+
+		&:before {
+			color: $desaturated;
+		}
+	}
+
+	&.spa {
+		@include checkboxMsg(
+			'This is not a Single Page App',
+			'This is a Single Page App'
+		);
+	}
+
+	&.expand-tree {
+		@include checkboxMsg(
+			'Tree Collapsed',
+			'Tree Expanded'
+		);
+
+		top: 5px;
+		right: 35px;
+	}
+}

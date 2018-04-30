@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Sitemap</title>
+		<link rel="stylesheet" href="app/styles.built.css">
+	</head>
+	<body class="app splash">
+		<section class="crawl">
+			<div class="crawl-wrap">
+				<h1 class="title app-progress">Sitemap</h1>
+
+				<form class="crawl-input data-form app-splash">
+					<label class="json-location" for="json-location">
+						<input id="json-location" class="json-location--text" type="text" placeholder="Enter file location">
+						<button class="button data-form--button" type="button" value="">Select File Location</button>
+					</label>
+					<label class="sliding-checkbox spa" for="spa">
+						<input id="spa" class="sliding-checkbox-input" type="checkbox" value="Is this Single Page App?">
+						<span class="sliding-checkbox-slider"></span>
+						<em class="sliding-checkbox-message"></em>
+					</label>
+					<label class="url" for="url">
+						<input id="url" class="url--text" type="text" placeholder="Enter URL" autofocus>
+						<button class="button data-form--button" type="submit">Crawl</button>
+					</label>
+					<h3 class="crawl-error"></h3>
+				</form>
+
+				<form id="drag" class="drag data-form app-splash" ondragstart="return false;" ondragenter="return false;" ondragover="return false;" ondrop="return false;">
+					<em class="drag-message">Drop File Anywhere</em>
+				</form>
+
+				<div class="crawl-status app-progress">
+					<div class="logo"></div>
+					<h3 class="crawl-progress"></h3>
+					<div class="button-wrap">
+						<button class="button crawl-cancel" type="button">Cancel</button>
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+		<section class="map-tree app-success">
+			<div class="map-menu">
+				<h1 class="title">Sitemap</h1>
+				<button class="crawl-restart button">Restart</button>
+			</div>
+			<div class="map-key">
+				<div class="map-key--stats count">
+					<div class="count-type count-links">
+						<p>
+							<span class="asset-title">Unique Links </span>
+							<span class="count-value"></span>
+						</p>
+					</div>
+					<div class="count-type count-pages">
+						<p>
+							<span class="asset-title">Total Pages </span>
+							<span class="count-value"></span>
+						</p>
+					</div>
+					<div class="count-type count-levels">
+						<p>
+							<span class="asset-title">Max Depth </span>
+							<span class="count-value"></span>
+						</p>
+					</div>
+				</div>
+				<div class="map-key--stats assets-all">
+					<p class="asset-title">All Assets</p>
+					<div class="asset-list"></div>
+				</div>
+				<div class="map-key--stats assets-unique">
+					<p class="asset-title">Unique Assets</p>
+					<div class="asset-list"></div>
+				</div>
+				<div class="map-key--stats assets-page">
+					<div class="asset-list"></div>
+				</div>
+			</div>
+			<div class="map-wrap">
+				<div class="map-home"></div>
+				<ul class="map-tree-list"></ul>
+			</div>
+		</section>
+
+	</body>
+
+	<script src="renderer.js"></script>
+</html>

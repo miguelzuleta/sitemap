@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:200,300,700,900');
+
+// General Layout
+$pad1: 20px;
+
+// Treemap Specs
+$treePad: 12px;
+$treeArmThickness: 1px;
+$siteElemWidth: 130px;
+$siteElemHeight: 50px;
+$siteHorizontalArmPosition: ($siteElemHeight + $treeArmThickness) / 2;
+
+// Sitemap Colors
+$darkest: #193b5e;
+$dark: #6c8ea1;
+$midtone1: #79b9be;
+$midtone2: #30b0cb;
+$light: #cfe7e9;
+$lightest: #fcfefe;
+$error: #e43c3c;
+$enabled: #97cb6f;
+$desaturated: grayscale($midtone1);
+
+// SPA form toggle switch
+$spa-slider-width: 24px;
+$spa-slider-height: $spa-slider-width / 2;
+$spa-slider-circle-offset: 2px;
+$spa-slider-circle: $spa-slider-height - ($spa-slider-circle-offset * 2);
+$spa-slider-circle-offset-checked: $spa-slider-height + $spa-slider-circle-offset;
+
+// Chart Info Section
+$success-info-height: 80px;
+
+
+// EXTENSIONS
+%hide {
+	display: none;
+}
+
+%show {
+	display: block;
+}
+
+%treeMapArms {
+	&:before, &:after {
+		content: '';
+		background-color: $darkest;
+		position: absolute;
+		z-index: 0;
+	}
+
+	z-index: 1;
+	position: relative;
+}
+
+// MIXINS
+@mixin font($weight, $size) {
+	font-weight: $weight;
+	font-size: $size;
+}
+
+@mixin formElementPlaceholder {
+	$prefixList: (
+		'::-webkit-input',
+		'::-ms-input',
+		'::-moz'
+	);
+
+	@each $prefix in $prefixList {
+		&#{$prefix}-placeholder {
+			@content;
+		}
+	}
+}
+
+@mixin hideCrawlStage($elements...) {
+	@each $element in $elements {
+		.app-#{$element} {
+			@extend %hide
+		}
+	}
+}
+
+@mixin checkboxMsg($unchecked, $checked) {
+	.sliding-checkbox {
+		&-message:before {
+			content: '#{$unchecked}';
+		}
+
+		&-input:checked {
+			~ .sliding-checkbox-message:before {
+				content: '#{$checked}';
+			}
+		}
+	}
+}
+

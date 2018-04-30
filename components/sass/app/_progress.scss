@@ -1,0 +1,23 @@
+&.progress {
+	@include hideCrawlStage('splash', 'success');
+
+	.logo {
+		margin: 35px 0;
+		animation: zoom 1.3s ease infinite alternate;
+
+		@at-root {
+			@keyframes zoom {
+				from {
+					transform: scale(0.9);
+				}
+				to {
+					transform: scale(1.1);
+				}
+			}
+		}
+	}
+
+	.title {
+		font-size: 30px;
+	}
+}

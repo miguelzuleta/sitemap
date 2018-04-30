@@ -1,0 +1,12 @@
+&.wide-svg {
+	overflow-y: hidden;
+
+	.crawl {
+		position: fixed;
+	}
+
+	.chart-tree {
+		position: relative;
+		top: $success-info-height;
+	}
+}

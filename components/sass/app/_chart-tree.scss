@@ -1,0 +1,25 @@
+.chart-tree {
+	height: calc(100vh - #{$success-info-height});
+	padding: 0 $pad1;
+	display: flex;
+	justify-content: center;
+
+	.node {
+		circle {
+			fill: $lightest;
+			stroke: $darkest;
+			stroke-width: 1px;
+		}
+
+		text {
+			font-size: 11px;
+		}
+	}
+
+	.link {
+		fill: none;
+		stroke: $desaturated + 50;
+		stroke-width: 1px;
+	}
+
+}

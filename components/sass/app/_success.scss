@@ -1,0 +1,25 @@
+&.success {
+	@include hideCrawlStage('progress', 'splash');
+
+	.crawl {
+		@extend %hide;
+		height: $success-info-height;
+		position: fixed;
+		top: 0;
+
+		.info {
+			width: auto;
+		}
+
+		&-wrap {
+			max-width: calc(100vw - #{$pad1 * 2});
+			display: flex;
+			justify-content: space-between;
+		}
+	}
+
+	.title {
+		font-size: 20px;
+		color: $desaturated;
+	}
+}

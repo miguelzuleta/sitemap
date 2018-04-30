@@ -1,0 +1,90 @@
+&.splash {
+	@include hideCrawlStage('progress', 'success');
+
+	&.error {
+		.crawl-input {
+			border-color: $error;
+		}
+
+		.crawl-error {
+			@extend %show;
+		}
+	}
+
+	.crawl-input {
+		position: relative;
+		display: inline-block;
+		margin: 45px 0 20px;
+		padding: 25px 25px 20px;
+		width: 100%;
+		border: 1px dashed $desaturated;
+		z-index: 1;
+
+		label {
+			width: inherit;
+			display: inline-block;
+		}
+	}
+
+	.url {
+		margin: 15px 0 0;
+
+		&--text {
+			font-size: 14px;
+		}
+	}
+
+	.json-location {
+		margin: 0 0 15px;
+
+		&--text {
+			font-size: 11px;
+		}
+	}
+
+	.url, .json-location {
+		position: relative;
+
+		[type="text"] {
+			@include formElementPlaceholder {
+				color: rgba($darkest, 0.5);
+			}
+			font-weight: 700;
+			width: 100%;
+			background-color: transparent;
+			border: none;
+			color: $darkest;
+		}
+
+		.data-form--button {
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+	}
+
+	.drag {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		width: 100vw;
+		height: 100vh;
+		top: 0;
+		left: 0;
+		opacity: 0;
+		background-color: $darkest;
+		border: 4px dashed $lightest;
+		border-radius: 10px;
+		z-index: 33333;
+		transition: opacity 0.1s linear;
+		z-index: 0;
+
+		&-message {
+			@include font(900, 40px);
+			letter-spacing: 0.01em;
+			color: $lightest;
+		}
+
+	}
+}

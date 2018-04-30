@@ -1,0 +1,12 @@
+body {
+	background-color: $lightest;
+
+	* {
+		font-family: 'Raleway', sans-serif;
+		box-sizing: border-box;
+	}
+
+	.hidden {
+		@extend %hide;
+	}
+}
