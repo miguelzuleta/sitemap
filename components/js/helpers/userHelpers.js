@@ -1,5 +1,9 @@
 const { userDesktop } = require('./urls/validateURLs.js')
-const { dialog } = require('electron').remote
+
+window.nodeRequire = require
+const { dialog } = window.nodeRequire('electron').remote
+
+// console.log(dialog)
 
 module.exports = {
 	filePathFromDialog(element) {

@@ -61,6 +61,13 @@ elem('crawl-cancel').addEventListener('click', event => {
 	abortCrawl()
 })
 
+module.exports = {
+	some() {
+		return 'hello'
+	}
+}
+
+
 // window.addEventListener('resize', event => {
 // 	treeDimensions()
 // })
